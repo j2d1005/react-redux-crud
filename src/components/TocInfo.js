@@ -15,7 +15,7 @@ class TocInfo extends Component{
             title: '이름',
             id: 0
         }
-    }
+    };
 
     render() {
         const style = {

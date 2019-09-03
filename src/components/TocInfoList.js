@@ -21,7 +21,7 @@ class TocInfoList extends Component{
         // console.log(this.showContent);
         const style = {
             marginTop: '15px'
-        }
+        };
         const { contents, selectId, onChangeMode, onSelect, mode } = this.props;
         const list = contents.map(          // contents 배열에 있는 하나하나를 PhoneInfo에 담은 list 배열을 생성
             (contents) => (                  // contents를 인자로 받아서 PhoneInfo 컴포넌트에 뿌려줌
@@ -44,7 +44,7 @@ class TocInfoList extends Component{
                     style = { style }
                     onClick={(e)=>{
                        e.preventDefault();
-                       onChangeMode('create');;
+                       onChangeMode('create');
                     }}>
                 추가</button>  
             }
