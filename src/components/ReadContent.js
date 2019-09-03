@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
 class ReadContent extends Component{
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //         contents : this.props.contents,
-    //         selectId : this.props.selectId
+
+    // shouldComponentUpdate(newProps, newState){
+    //     if(this.props.contents === newProps.contents){
+    //         return false;
+    //     }
+    //     else{
+    //         return true;
     //     }
     // }
 
@@ -22,6 +24,7 @@ class ReadContent extends Component{
             <article>
                 <h2>{title}</h2>
                 <p>{desc}</p>
+                {/*read 모드일 때 수정과 삭제버튼 등장*/}
                 {mode === 'read' &&
                     <div className="btn_wrap">
                         <button

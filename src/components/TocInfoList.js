@@ -3,25 +3,15 @@ import TocInfo from './TocInfo'
 import ReadContent from "./ReadContent";
 
 class TocInfoList extends Component{
-    // constructor(props) {
-    //     super(props)
-    //
-    //     this.state = {
-    //         contents: this.props.contents,
-    //         // filterContents : "",
-    //         selectContents: ""
-    //     }
-    //
-    // }
+    shouldComponentUpdate(newProps, newState){
+        if(this.props.contents === newProps.contents){
+            return false;                             // info를 클릭하여 readContent가 render되어도 리스트는 유지
+        }
+        else{
+            return true;
+        }
+    }
 
-    // componentDidMount() {
-    //     const { contents, filterContents } = this.state;
-    //     this.setState({
-    //         filterContents : contents.filter(
-    //             contents => contents.mode === 'read'
-    //         )
-    //     });
-    // }
     static defaultProps = {
         contents: []
     };

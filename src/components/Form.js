@@ -42,6 +42,8 @@ class Form extends Component{
     };
     
     render(){
+        console.log('render Form = ' + this.props.mode);
+
         const { onChangeMode, mode } = this.props;
         const { title, desc } = this.state;
         return (

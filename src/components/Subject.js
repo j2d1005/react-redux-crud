@@ -1,7 +1,7 @@
 import React from 'react';
 
 //함수방식
-const Subject = ({ title, sub, onChangeMode }) => {  // 프롭스들을 여기에 인자로 받는다.
+const Subject = ({ title, sub, onChangeMode }) => {
     return (
         <header>
              <h1>

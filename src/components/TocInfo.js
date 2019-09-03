@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 
 class TocInfo extends Component{
+    shouldComponentUpdate(newProps, newState){  // info 중에 수정하거나 추가된 요소만 render
+        if(this.props.contents === newProps.contents){
+            return false;
+        }
+        else{
+            return true;
+        }
 
+    }
     static defaultProps = {
         contents: {
             title: '이름',

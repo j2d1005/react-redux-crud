@@ -35,8 +35,6 @@ class App extends Component {
       const { contents } = this.state;
       this.setState({               // maxId 가 일단 들어가고 그다음 부터 ++됨 
           contents : contents.concat({ id: this.maxId++, ...createData }),
-//          mode : 'read',
-//          selectId : this.maxId
       });
       this.onSelect(this.maxId-1); // maxId가 length보다 1 큼
       this.onChangeMode('read');
@@ -53,6 +51,7 @@ class App extends Component {
           mode : 'read'
       });
   };
+
   onDelete = () => {
       let { selectId, contents } = this.state;
       this.setState({
@@ -62,12 +61,8 @@ class App extends Component {
   };
 
   render(){
-      // console.log(this.state.selectId);
       const { title, sub } = this.state.subject;
       const { mode, welcome, contents, selectId } = this.state;
-      // const filterContents = contents.filter(  //  contents 배열에서 mode가 read인 것들만 전달
-      //     contents => contents.mode === 'read'
-      // );
       return (
           <div className="App">
               <Subject
