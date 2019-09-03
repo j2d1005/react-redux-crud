@@ -38,28 +38,17 @@ class App extends Component {
 //          mode : 'read',
 //          selectId : this.maxId
       });
-      // this.onSelect(this.maxId-1); // maxId가 length보다 1 큼
-      this.onSelect(contents.length);   // maxId-1 로 해놓으니 onDelete랑 충돌남.... why;
+      this.onSelect(this.maxId-1); // maxId가 length보다 1 큼
       this.onChangeMode('read');
   };
 
   onDelete = () => {
       let { selectId, contents } = this.state;
-      let newContents = Array.from(contents);
-      newContents.splice(selectId,1);
       this.setState({
-          contents : newContents,
-          mode : 'read',
-          selectId : 0
+          contents: contents.filter(content => content.id !== selectId),
+          mode : 'welcome',
       });
-      {newContents.length === 0 &&
-        this.setState({
-            mode : 'create'
-        });
-      }
-      console.log(newContents.length);
-      console.log(contents.length);
-  }
+  };
 
   render(){
       // console.log(this.state.selectId);
@@ -88,6 +77,7 @@ class App extends Component {
                       welcome={welcome}
                       contents={contents}
                       selectId={selectId}
+                      onChangeMode={this.onChangeMode}
                       onDelete={this.onDelete}
                   />
               }
