@@ -42,6 +42,17 @@ class App extends Component {
       this.onChangeMode('read');
   };
 
+  onUpdate = (updateData) => {
+      const { contents, selectId } = this.state;
+      this.setState({
+          contents : contents.map(
+              content => content.id === selectId
+                        ? { ...content, ...updateData }
+                        : content
+          ),
+          mode : 'read'
+      });
+  };
   onDelete = () => {
       let { selectId, contents } = this.state;
       this.setState({
@@ -85,7 +96,11 @@ class App extends Component {
                   <Form 
                       onChangeMode={this.onChangeMode}
                       onCreate={this.onCreate}
-               />
+                      onUpdate={this.onUpdate}
+                      mode={mode}
+                      selectId={selectId}
+                      contents={contents}
+                  />
               }
               
 
