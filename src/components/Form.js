@@ -40,7 +40,25 @@ class Form extends Component{
                 )
             }
     };
-    
+    // componentDidUpdate(prevProps, prevState) {
+    //     const { contents, selectId } = this.props;
+    //     const content = contents.filter(content => content.id === selectId); // selectId와 id가 같은 contents만 남긴다.
+    //     if( prevProps.mode !== this.props.mode ){
+    //         // console.log(prevProps.mode, this.props.mode);
+    //         if( this.props.mode === "create" ) {
+    //             this.setState({
+    //                 title: "",
+    //                 desc: ""
+    //             });
+    //         }else{
+    //             this.state = {
+    //                 id : content[0].id,
+    //                 title : content[0].title,
+    //                 desc : content[0].desc
+    //             }
+    //         }
+    //     }
+    // }
     render(){
         console.log('render Form = ' + this.props.mode);
 
