@@ -4,7 +4,7 @@ import ReadContent from "./ReadContent";
 
 class TocInfoList extends Component{
     shouldComponentUpdate(newProps, newState){
-        if(this.props.contents === newProps.contents){
+        if(this.props.contents === newProps.contents && this.props.mode === newProps.mode){
             return false;                             // info를 클릭하여 readContent가 render되어도 리스트는 유지
         }
         else{
