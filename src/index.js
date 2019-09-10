@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import AppContainer from './containers/AppContainer';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Redux 관련 불러오기
+import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import reducers from './reducers';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// 스토어 생성
+// 인자로 리듀서를 받는다.
+// 두번째 인자는 크롬에서 redux devtools 를 사용 하기 위해 넣은 것 
+const store = createStore(
+    reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+ 
+
+// provider는 react-redux 라이브러리에 연동되어 있는 컴포넌트. 
+// 리액트 앱에 store를 쉽게 연동할 수 있게 해준다.
+// store를 연동할 컴포넌트를 Provider 컴포넌트로 감싸고 Provider에 store를 props로 준다.
+
+ReactDOM.render(
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
+    document.getElementById('root')
+);
+//기존의 App 컴포넌트를 AppContainer 컴포넌트로 교체 
+// AppContainer에서 모든 처리를 하고 그 내부의 프레젠테이셔널 컴포넌트는 뷰만 담당한다.!

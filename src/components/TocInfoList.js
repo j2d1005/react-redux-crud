@@ -31,6 +31,7 @@ class TocInfoList extends Component{
                     selectId={selectId}
                     onChangeMode={onChangeMode}
                     onSelect={onSelect}
+                    mode={mode}
                 />
             )
         );

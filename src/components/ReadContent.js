@@ -2,15 +2,6 @@ import React, { Component } from 'react';
 
 class ReadContent extends Component{
 
-    // shouldComponentUpdate(newProps, newState){
-    //     if(this.props.contents === newProps.contents){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
-
     render() {
         console.log('render ReadContent');
 

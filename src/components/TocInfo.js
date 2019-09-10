@@ -21,7 +21,7 @@ class TocInfo extends Component{
         const style = {
             paddingTop: '15px',
         };
-        const { contents, selectId, onChangeMode, onSelect } = this.props;  // 받아온 프롭스
+        const { contents, selectId, onChangeMode, onSelect, mode } = this.props;  // 받아온 프롭스
         const { title } = contents;
 
         console.log('render TocInfo'+ contents.id);
@@ -31,7 +31,9 @@ class TocInfo extends Component{
                 <a href=""
                    onClick={(e)=>{
                        e.preventDefault();
-                       onChangeMode('read');
+                    //    if(mode !== "read"){
+                        onChangeMode('read');
+                    //    }
                        onSelect(contents.id);
                    }}>
                 {title}</a>
