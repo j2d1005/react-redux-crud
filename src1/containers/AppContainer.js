@@ -9,29 +9,29 @@ class AppContainer extends Component {
     changeMode = (mode) => {
         const { CrudActions } = this.props;
         CrudActions.onChangeMode(mode);
-    };
+    }
     select = (idx) => {
         const { CrudActions } = this.props;
         CrudActions.onSelect(idx);
-    };
+    }
     create = (createData) => {
         const { CrudActions } = this.props;
         CrudActions.onCreate(createData);
-    };
+    }
     update = (updateData) => {
         const { CrudActions } = this.props;
         CrudActions.onUpdate(updateData);
-    };
+    }
     deletee = () => {
         const { CrudActions } = this.props;
         CrudActions.onDelete();
-    };
-
+    }
+    
     render(){
         const { selectId, mode, welcome, subject, contents } = this.props;
         return(
             <>
-                <App
+                <App 
                     selectId = {selectId}
                     mode = {mode}
                     welcome = {welcome}

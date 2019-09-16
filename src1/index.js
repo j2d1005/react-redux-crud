@@ -14,8 +14,7 @@ import { Provider } from 'react-redux';
 // 두번째 인자는 크롬에서 redux devtools 를 사용 하기 위해 넣은 것 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore( rootReducer, devTools );
-// console.log(store.getState());
-
+  console.log(store.getState()); 
 
 // provider는 react-redux 라이브러리에 연동되어 있는 컴포넌트. 
 // 리액트 앱에 store를 쉽게 연동할 수 있게 해준다.
