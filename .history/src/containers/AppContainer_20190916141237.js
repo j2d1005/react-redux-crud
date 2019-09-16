@@ -2,19 +2,46 @@ import React, {Component} from 'react';
 import App from '../components/App';
 import { connect } from 'react-redux';
 // container 컴포넌트를 store에 연결 시키려면 react-redux의 connect 함수를 사용해야 한다.
-
-// 액션안써서 생략
-// import { bindActionCreators } from "redux"; // 추가해줘야해 
-// import * as crudActions from "../store/modules/crud"; 
+import { bindActionCreators } from "redux"; // 추가해줘야해 
+import * as crudActions from "../store/modules/crud";
 
 class AppContainer extends Component {
+    changeMode = (mode) => {
+        const { CrudActions } = this.props;
+        CrudActions.onChangeMode(mode);
+    };
+    select = (idx) => {
+        const { CrudActions } = this.props;
+        CrudActions.onSelect(idx);
+    };
+    create = (createData) => {
+        const { CrudActions } = this.props;
+        CrudActions.onCreate(createData);
+    };
+    update = (updateData) => {
+        const { CrudActions } = this.props;
+        CrudActions.onUpdate(updateData);
+    };
+    deletee = () => {
+        const { CrudActions } = this.props;
+        CrudActions.onDelete();
+    };
 
     render(){
-        const { mode } = this.props;
+        const { selectId, mode, welcome, subject, contents } = this.props;
         return(
             <>
                 <App
+                    selectId = {selectId}
                     mode = {mode}
+                    welcome = {welcome}
+                    subject = {subject}
+                    contents = {contents}
+                    onChangeMode = {this.changeMode}
+                    onSelect = {this.select}
+                    onCreate = {this.create}
+                    onUpdate = {this.update}
+                    onDelete = {this.deletee}
                 />
             </>
         );
@@ -23,7 +50,12 @@ class AppContainer extends Component {
 }
 //store 안의 state값을 props로 받음
 const mapStateToProps = ({crud}) => ({
+    maxId : crud.maxId,
+    selectId : crud.selectId ,
     mode: crud.mode,    
+    welcome: crud.welcome,
+    subject: crud.subject,
+    contents: crud.contents
 });
 
 // // 액션 생성자를 사용하여 액션을 생성하고,
@@ -36,10 +68,9 @@ const mapStateToProps = ({crud}) => ({
 //     onUpdate: (updateData) => dispatch(actions.onUpdate(updateData)),
 //     onDelete: () => dispatch(actions.onDelete()),
 // });
-
-// const mapDispatchToProps = dispatch => ({
-//     CrudActions: bindActionCreators(crudActions, dispatch) // 액션들을 한줄로 표시
-// });
+const mapDispatchToProps = dispatch => ({
+    CrudActions: bindActionCreators(crudActions, dispatch) // 액션들을 한줄로 표시
+});
 
 // App 컴포넌트의 Container 컴포넌트
 // App 컴포넌트를 어플리케이션의 데이터 레이어와 묶는 역할을 한다.
@@ -52,5 +83,5 @@ const mapStateToProps = ({crud}) => ({
 // export default AppContainer;
 export default connect(
     mapStateToProps,
-    // mapDispatchToProps  // 액션안받아도 되어서 생략
+    mapDispatchToProps
 )(AppContainer);

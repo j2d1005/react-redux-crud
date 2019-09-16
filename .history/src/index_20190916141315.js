@@ -13,7 +13,6 @@ import { Provider } from 'react-redux';
 // 인자로 리듀서를 받는다.
 // 두번째 인자는 크롬에서 redux devtools 를 사용 하기 위해 넣은 것 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
 const store = createStore( rootReducer, devTools );
 // console.log(store.getState());
 

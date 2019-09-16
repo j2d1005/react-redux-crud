@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 // container 컴포넌트를 store에 연결 시키려면 react-redux의 connect 함수를 사용해야 한다.
 
 // 액션안써서 생략
-// import { bindActionCreators } from "redux"; // 추가해줘야해 
-// import * as crudActions from "../store/modules/crud"; 
+import { bindActionCreators } from "redux"; // 추가해줘야해 
+import * as crudActions from "../store/modules/crud"; 
 
 class AppContainer extends Component {
 
@@ -22,9 +22,9 @@ class AppContainer extends Component {
 
 }
 //store 안의 state값을 props로 받음
-const mapStateToProps = ({crud}) => ({
-    mode: crud.mode,    
-});
+// const mapStateToProps = ({crud}) => ({
+//     mode: crud.mode,    
+// });
 
 // // 액션 생성자를 사용하여 액션을 생성하고,
 // // 해당 액션을 dispatch 하는 함수를 만들은 후, 이를 props 로 연결해줍니다.
