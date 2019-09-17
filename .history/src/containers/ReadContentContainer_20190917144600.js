@@ -8,14 +8,12 @@ class ReadContentContainer extends Component {
     changeMode = (mode) => {
         const { CrudActions } = this.props;
         CrudActions.onChangeMode(mode);
-        // this.props.onChangeMode(mode);
     }
     deletee = () => {
         const { CrudActions } = this.props;
         CrudActions.onDelete();
-        // this.props.onDelete();
     }
-
+    
     render(){
         const { mode, welcome, contents, selectId } = this.props;
         return(
@@ -43,8 +41,7 @@ const mapStateToProps = ({crud}) => ({
 });
 const mapDispatchToProps = dispatch => ({
     CrudActions: bindActionCreators(crudActions, dispatch) // 액션들을 한줄로 표시
-    // const mapDispatchToProps = { onChangeMode, onDelete };
-    // 이렇게 액션생성자 객체를 바로 전달해주면 자동으로 bindActionCreators를 해준다.
+    // const mapDispatchToProps = { increment, decrement };
 });
 export default connect(
     mapStateToProps,

@@ -1,3 +1,4 @@
+// import * as types from '../../actions/ActionTypes';
 import { createAction, handleActions } from "redux-actions"; // redux-actions 호출
 
 // 기존의 actions폴더안에 있던 ActionTypes과 액션생성자를 이곳에 통합
@@ -53,10 +54,9 @@ const initialState = {
 // 리듀서 정의
 export default handleActions({
     // 액션타입에 접두사가 있으면 [], 없으면 생략가능
-    // redux-actions를 사용하면서 switch문을 사용하지 않아도 된다.
     [ON_CHANEGE_MODE]: (state, action) => ({
         ...state,
-        mode: action.payload 
+        mode: action.payload // payload란 redux-actions에서 ~~
     }),
     [ON_SELECT]: (state, action) => ({
         ...state,
@@ -85,4 +85,75 @@ export default handleActions({
         ),
         mode : "welcome"
     })
-}, initialState); // initialState를 리듀서의 state로 사용한다.
+}, initialState);
+
+
+// 리듀서는 state와 action을 파라미터로 받는다 .
+// action.type에 따라 작업을 하고 새 state를 반환한다. 
+// function reducers(state = initialState, action) { // state가 undefined일때 initialState를 기본으로 사용한다.
+//     console.log(action);
+
+//     switch (action.type) {
+//         case types.ON_CHANEGE_MODE:
+//             return {
+//                 ...state,
+//                 mode: action.mode
+//             };
+
+//         case types.ON_SELECT:
+//             return {
+//                 ...state,
+//                 selectId : action.idx
+//             };
+//             // if(state.selectId === action.idx){
+//             //     console.log('same');
+//             //     return{
+//             //         ...state
+//             //     }
+//             // }else{
+//             //     return {
+//             //         ...state,
+//             //         selectId : action.idx
+//             //     };
+//             // }            
+
+//         case types.ON_CREATE:
+//                 // const newContents = state.contents.concat({ id: state.maxId++, ...action.createData});
+//                 // const newSelectId = state.maxId-1;
+//             return {                
+//                 ...state,
+//                 contents : state.contents.concat({
+//                     id: state.maxId++,
+//                     ...action.createData
+//                 }),
+//                 selectId : state.maxId-1,
+//                 mode : "read"
+//             };
+        
+//         case types.ON_UPDATE:
+//             const updateContents = state.contents.map(
+//                 content => content.id === state.selectId
+//                 ? { ...content, ...action.updateData }
+//                 : content
+//             );
+//             return {
+//                 ...state,
+//                 contents : updateContents,
+//                 mode : "read"
+//             };
+        
+//         case types.ON_DELETE:
+//             const deleteContents = state.contents.filter(content => content.id !== state.selectId);
+//             console.log('deleteContents - ' +deleteContents);
+//             return {
+//                 ...state,
+//                 contents : deleteContents,
+//                 mode : "welcome"
+//             }
+        
+//         default:
+//                 return state;
+//     }
+// }
+
+// export default reducers;

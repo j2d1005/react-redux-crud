@@ -1,3 +1,4 @@
+// import * as types from '../../actions/ActionTypes';
 import { createAction, handleActions } from "redux-actions"; // redux-actions 호출
 
 // 기존의 actions폴더안에 있던 ActionTypes과 액션생성자를 이곳에 통합

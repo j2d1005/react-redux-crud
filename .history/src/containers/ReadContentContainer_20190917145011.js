@@ -44,7 +44,6 @@ const mapStateToProps = ({crud}) => ({
 const mapDispatchToProps = dispatch => ({
     CrudActions: bindActionCreators(crudActions, dispatch) // 액션들을 한줄로 표시
     // const mapDispatchToProps = { onChangeMode, onDelete };
-    // 이렇게 액션생성자 객체를 바로 전달해주면 자동으로 bindActionCreators를 해준다.
 });
 export default connect(
     mapStateToProps,
