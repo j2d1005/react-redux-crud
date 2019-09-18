@@ -47,6 +47,6 @@ const mapDispatchToProps = dispatch => ({
     // 이렇게 액션생성자 객체를 바로 전달해주면 자동으로 bindActionCreators를 해준다.
 });
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps, //뷰를 위해서 state를 받고 App에 전달하여 렌더링되어 ui가 바뀐다.
+    mapDispatchToProps // 액션을 연결시켜주는 함수
 )(ReadContentContainer);
